@@ -6,6 +6,7 @@ from selenium import webdriver
 from time import sleep
 
 driver = webdriver.Chrome('/Users/janice/Developer/chromedriver')
+
 # Create empty DataFrame to store the data.
 columns = [
     'title',
@@ -20,6 +21,7 @@ columns = [
     'requirements'
 ]
 jobs = pd.DataFrame(columns=columns)
+
 # Loop through 100 pages.
 count = -1
 for page in range(64):
@@ -65,11 +67,13 @@ for page in range(64):
                 stype = None
 
             count += 1
+
             # Save data in DataFrame.
             jobs.loc[count] = [title, loc, emp_type, level, cat, smin, smax, stype, desc, req]
-        
+
             driver.back()
-            sleep(3) 
+            sleep(3)
+
         # Terminate the loop at the last page.
         except:
             break
